@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/*
+ Filename:    diceroller.css
+    Author:   Jaydeep kanubhai Patel (CST 000481460)
+    Date:      3 february 2022
+ Course:      CWEB 190 (Internet Programming/Web Applications 1)
+ Instructor:  Michael Grzesina
+
+ */
+
+#image1, #image2, #image3, #image4, #image5 {
+    height: 100px;
+    width: 100px;
+}
+
+#tblStats td {
+    text-align: center;
+    margin: 20px;
+}
+tr td{
+    margin: 20px;
+    padding: 10px;
+}
