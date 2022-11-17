@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--  
+  Filename: parking.html
+  Author:   YOURNAME (cst###)
+  Date:     
+  Purpose:  
+-->
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="css/form.css" />
+        <script src="javaScript/jquery-3.6.0.min.js" ></script>
+        <script src="javaScript/jquery.validate.min.js" ></script>
+        <script src="javaScript/validation.js" defer></script>
+        <title>Staff Parking Information</title>
+    </head>
+
+    <body>
+        <form id="parkingForm" action="#">
+
+            <fieldset>
+                <label for="fullName">Full Name (last, first)</label>
+                <input type="text" id="fullName" name="fullName" required/>
+
+                <label for="licensePlate">License Plate</label>
+                <input type="text" style="text-transform: uppercase" id="licensePlate" name="licensePlate" required/>
+
+                <label for="parkingPass">Parking Pass Number</label>
+                <input type="text" id="parkingPass" name="parkingPass" required />
+                
+                <input id="btnsubmit" type="submit" value="Add" />
+                <input type="reset" value="Clear" />
+            </fieldset>
+        </form>
+        
+        <form id="requestForm" action="#">
+            <fieldset>
+                <label for="plate">Select a license plate:</label>
+                <select id="plate">
+                    <option value="999: Coralee Kaban">ABC 123</option>
+                    <option value="7: Michael Grzesina">XYZ 789</option>
+                </select>
+
+                <label for="selectedData">Parking data is:</label>
+                <input type="text" id="selectedData"
+                       readonly="readonly" />
+            </fieldset>
+        </form>
+
+
+
+        <p>License plates added:</p>
+        <p id="initial">No plates added yet</p>
+        <ul></ul>
+
+  
+        
+    </body>
+
+</html>
