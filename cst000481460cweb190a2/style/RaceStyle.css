@@ -1,0 +1,19 @@
+/*
+   JAYDEEP KANUBHAI PATEL
+   Computer systems technology (year 1)
+   student id: 000481460
+   date: 22/feb/2022
+
+   */
+
+
+
+
+/* here i am just  positioning the finish line*/
+
+#finish
+{
+   position: absolute;
+   top: 50px;
+   left: 1200px;
+}
