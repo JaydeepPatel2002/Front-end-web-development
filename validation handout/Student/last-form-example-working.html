@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  Filename: last-form-example
+  Author:   Michael Grzesina (cst000)
+  Date:     3/15/2019
+  Purpose:  Demonstrate form validation
+-->
+    <meta charset="UTF-8">
+    <title>Appointment Form</title>
+    <link rel="stylesheet" href="styles/jform.css">
+    <script src="scripts/jquery-3.6.0.min.js"></script>
+    <script src="scripts/jquery.validate.min.js"></script>
+    <script>
+        function allDone() {
+            alert("Successfully validated!");
+        }
+
+        $(function() {
+            jQuery.validator.addMethod("testName", function(value, elem) {
+                return this.optional(elem) || value.trim().length >= 2;
+            }, "Name must include 2 non-space characters")
+
+            jQuery.validator.addMethod("testType", function(value, elem) {
+                return this.optional(elem) || !elem.options[0].selected;
+            }, "You must choose an appointment type");
+
+            $("#appointment").validate({
+                rules: {
+                    myName: {
+                        testName: true
+                    },
+                    myType: {
+                        testType: true
+                    }
+                },
+                messages: {
+                    myName: {
+                        required: "A name is required",
+                        minlength: "Name must include at least 2 characters"
+                    },
+                    myTime: {
+                        required: "A time is required"
+                    }
+                },
+                submitHandler: allDone
+            });
+        });
+    </script>
+</head>
+<body>
+    <form name="appointment" id="appointment" action="aformprocessor.html" method="get">
+        <fieldset>
+            <legend>Appointment Booking Form</legend>
+
+            <p>
+                <label for="myName">Name:</label>
+                <input id="myName" name="myName" type="text"
+                       required minlength="2" maxlength="20" />
+            </p>
+
+            <p>
+                <label for="myTime">Time:</label>
+                <input id="myTime" name="myTime" type="time" required />
+            </p>
+
+            <p>
+                <label for="myType">Type:</label>
+                <select id="myType" name="myType" required>
+                    <option value="none">--Choose type of appointment--</option>
+                    <option value="i">Initial appointment</option>
+                    <option value="s">Subsequent appointment</option>
+                    <option value="o">Other</option>
+                </select>
+            </p>
+
+            <p>
+                <input type="submit" />
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>

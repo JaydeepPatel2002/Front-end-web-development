@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Instructor Information</title>
+        <script src="scripts/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#btnUpdate").on("click", function() {
+                    $("#name").text("Alex Wang");
+                    $("#office").text("Room 348A");
+                    $("#phone").text("306-110-9999");
+                });
+
+                $("#btnUpdateAjax").on("click", function() {
+                   $.getJSON("data/oneinstructor.json", processInstructor);
+                });
+
+                $("#btnUpdateAll").on("click", function() {
+                    $.getJSON("data/allinstructors.json", processAllInstructors);
+                });
+            });
+
+            function processInstructor(jsonObject, status) {
+                if (status === "success") {
+                    $("#name").text(jsonObject.name);
+                    $("#office").text(jsonObject.office);
+                    $("#phone").text(jsonObject.phone);
+                } else {
+                    window.alert("There was a problem: " + status);
+                }
+            }
+
+            function processAllInstructors(jsonArray, status) {
+                if (status === "success") {
+                    let names = [];
+                    let offices = [];
+                    let phones = "";
+
+                    for (const instructor of jsonArray) {
+                        names.push(instructor.name);
+                        offices.push(instructor.office);
+                        phones += instructor.phone + ", ";
+                    }
+
+                    $("#name").text(names.join(", "));
+                    $("#office").text(offices.join(", "));
+                    $("#phone").text(phones.slice( 0, -2 ));
+                } else {
+                        window.alert("There was a problem: " + status);
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>Page to display instructor information using jQuery</h1>
+        <p>Name: <span id="name">Unknown</span></p>
+        <p>Office: <span id="office">Unknown</span></p>
+        <p>Phone: <span id="phone">Unknown</span></p>
+
+        <p>
+            <button type="button" id="btnUpdate">
+                Update Instructor Information
+            </button>
+            <button type="button" id="btnUpdateAjax">
+                Use jQuery To Update Instructor Information
+            </button>
+            <button type="button" id="btnUpdateAll">
+                Update All Instructors
+            </button>
+        </p>
+    </body>
+</html>
