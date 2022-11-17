@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  Filename: game
+  Author:   Michael Grzesina (mg)
+  Date:     3/19/2018
+  Purpose:  
+  Links to: 
+-->
+    <meta charset="UTF-8">
+    <title>Guessing Game</title>
+    <style>
+        #results {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p>I've picked a number from 1 to 10. Try to figure it out in 3 guesses or less!</p>
+    <p><label for="guess">Your guess:</label> <input id="guess" maxlength="2" type="number" min="1" max="10" step="1" />
+        <input type="button" value="Check" id="btnCheck" /></p>
+    <p>You have made <span id="numGuesses">0</span> guesses so far.</p>
+    <div id="feedback"></div>
+    <div id="results">
+        <p><input type="button" value="New Game" id="btnNewGame" /></p>
+        <p>Wins this session: <span id="sessionWins">0</span></p>
+        <p>Wins all-time: <span id="allTimeWins">0</span></p>
+        <p><input type="button" value="Reset Stats" id="btnResetStats" /></p>
+    </div>
+
+    <script>
+        let myNum = 1;//Math.floor(Math.random() * 10) + 1;
+        let numGuesses = 0;
+        let winner = false;
+        let endGame = false;
+        let sessionWins = 0;
+        let allTimeWins = 0;
+
+        setWins();
+
+        document.querySelector("#btnCheck").addEventListener("click", function () {
+            let guess = parseInt(document.querySelector("#guess").value, 10);
+            let newPara;
+
+            numGuesses++;
+            document.querySelector("#numGuesses").innerText = numGuesses;
+
+            newPara = document.createElement("p");
+            if (guess === myNum) {
+                winner = true;
+                endGame = true;
+                newPara.innerText = guess + " is RIGHT! Congratulations, you win!";
+                sessionWins++;
+                allTimeWins++;
+                setWins();
+            }
+            else if (guess < myNum) {
+                newPara.innerText = guess + " is too low.";
+            }
+            else {
+                newPara.innerText = guess + " is too high.";
+            }
+
+            if (numGuesses === 3 && !winner) {
+                endGame = true;
+                newPara.innerText += " You lose...";
+            } else if (!winner) {
+                newPara.innerText += " Try again!";
+            }
+            document.querySelector("#feedback").appendChild(newPara);
+
+            if (endGame) {
+                document.querySelector("#btnCheck").disabled = true;
+                document.querySelector("#guess").disabled = true;
+                document.querySelector("#results").style.display = "block";
+            }
+        });
+
+        function setWins() {
+            document.querySelector("#sessionWins").innerText = sessionWins;
+            document.querySelector("#allTimeWins").innerText = allTimeWins;
+        }
+
+        document.querySelector("#btnNewGame").addEventListener("click", function () {
+            document.querySelector("#results").style.display = "none";
+            numGuesses = 0;
+            document.querySelector("#numGuesses").innerText = "0";
+            myNum = 1;//Math.floor(Math.random() * 10) + 1;
+            winner = false;
+            endGame = false;
+            document.querySelector("#feedback").innerHTML = "";
+            document.querySelector("#btnCheck").disabled = false;
+            document.querySelector("#guess").value = "";
+            document.querySelector("#guess").disabled = false;
+        });
+
+        document.querySelector("#btnResetStats").addEventListener("click", function () {
+            sessionWins = 0;
+            allTimeWins = 0;
+            setWins();
+        });
+    </script>
+</body>
+</html>

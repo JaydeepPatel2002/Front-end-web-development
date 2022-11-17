@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+		<title>Maintaining state using hidden form fields</title>
+    </head>
+    
+    <body>
+		<form id="orderform" action="aformprocessor.html" method="get">
+			<p>
+				<label for="quantity">Quantity to order:</label>
+				<input type="text" id="quantity" name="quantity" />
+				<input type="hidden" id="custId" name="custId" value="123" />
+			</p>
+            
+			<p>
+				<button type="submit">Submit order</button>
+				<button type="reset">Reset form</button>
+			</p>
+		</form>
+
+		<script>
+			"use strict";
+
+			document.getElementById("orderform").insertAdjacentHTML("beforeend",
+				"<input type='hidden' name='submissionURL' value='" +
+				window.location + "' />");
+		</script>
+    </body>
+</html>

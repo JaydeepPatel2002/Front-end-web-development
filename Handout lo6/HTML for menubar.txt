@@ -1,0 +1,15 @@
+        <ul id="menubar">
+            <li><a href="#">Site Information</a>
+                <ul>
+                    <li><a href="#">Home page</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Alphabet Games</a>
+                <ul>
+                    <li><a href="#">Lowercase letters</a></li>
+                    <li><a href="learning_letters_A.html">Uppercase letters</a></li>
+                    <li><a href="#">Both</a></li>
+                </ul>
+            </li>
+        </ul>

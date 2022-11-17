@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rewrite URLs</title>
+        <script>
+            window.onload = function() {
+                document.getElementById("rewrite").onclick = function() {
+                    // let links = document.querySelectorAll("a");
+                    let links = document.getElementsByTagName("a");
+
+                    for (let individualLink of links) {
+                        individualLink.href += "?custid=123";
+                    }
+                };
+            };
+        </script>
+    </head>
+    
+    <body>
+        <h1>Welcome to the CST Store!</h1>
+        <p>
+            The CST store is operated by Computer Systems Technology
+            students at Saskatchewan Polytechnic.
+        </p>
+    
+        <p>
+            We have two departments to serve <strong>all</strong> of your needs!
+        </p>
+    
+        <ul>
+            <li><a href="computers.html">Computers</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+        </ul>
+    
+        <p>
+            <button id="rewrite">Rewrite URLs</button>
+        </p>
+    </body>
+</html>

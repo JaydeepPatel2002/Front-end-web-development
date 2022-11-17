@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Create and display cookies using utilities</title>
+        <script src="scripts/jquery-3.6.0.min.js"></script>
+        <script src="scripts/cookieutils.js"></script>
+        <script src="scripts/cookies_practice_with_utils.js"></script>
+    </head>
+
+    <body>
+        <h1>Fun with cookie utilities!</h1>
+        <p>
+            <label for="nameField">Name</label>
+            <input type="text" id="nameField" />
+        </p>
+        <p>
+            <label for="valueField">Value</label>
+            <input type="text" id="valueField" />
+        </p>
+        <p>
+            <input type="radio" id="cookieP" name="cookieType"
+                   value="persistent" checked="checked" />
+            <label for="cookieP">Persistent</label>
+            <input type="radio" id="cookieS" name="cookieType"
+                   value="session" />
+            <label for="cookieS">Session</label>
+        </p>
+        <p>
+            <button id="setButton">Set cookie</button>
+        </p>
+        <p>
+            Cookie values: <span id="cookieValues"></span>
+        </p>
+        <p>
+            <button id="displayButton">Display cookies</button>
+        </p>
+    </body>
+</html>

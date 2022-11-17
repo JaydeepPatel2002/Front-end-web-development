@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+		<title>CWEB 190 Login Page</title>
+		<script src="scripts/cookieutils.js"></script>
+	</head>
+
+    <body>
+		<h1>CWEB 190 Login Page</h1>
+		<p>Please enter your name, then press the Login button</p>
+		<p>
+			<label for="nameField">Name</label>
+			<input type="text" id="nameField" name="nameField" />
+		</p>
+		<p>
+			<button id="loginButton">Login</button>
+		</p>
+	    <script>
+            //We could use jQuery, but I'll stick with the DOM to show it can be done without jQuery
+            // When the login button is clicked
+            document.getElementById("loginButton").addEventListener("click", function() {
+                // Get the username from the username field; could .trim() as well or check for valid entry
+                let username = document.getElementById("nameField").value;
+
+                // (Optional) If the username is not blank
+                if (username.trim() !== "") {
+                    // Create a persistent cookie with the username (I chose 7 days for the length)
+                    setCookie("username", username, 7);
+                    // Go back to the home page
+                    window.location = "home-practice.html";
+                }
+            });
+        </script>
+    </body>
+</html>

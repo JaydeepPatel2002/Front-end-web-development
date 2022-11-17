@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/*
+   Filename: jqueryevents.css
+   Author:   Your name (your user id)
+   Date:     2021-03-26
+   Purpose:  
+*/
+
+.special {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.green {
+    color: green;
+}
+
+.invisible {
+    visibility: hidden;
+}

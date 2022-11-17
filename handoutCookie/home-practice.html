@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CWEB 190 Home Page</title>
+        <script src="scripts/cookieutils.js"></script>
+    </head>
+
+    <body>
+        <h1>CWEB 190 Home Page</h1>
+        <div id="welcome">
+            <h2>Welcome, stranger!</h2>
+            <p>Click <a href="login-practice.html">here</a> to login</p>
+        </div>
+        <script>
+            // try to read the username cookie
+            let username = readCookie("username");
+
+            // if the cookie exists (otherwise do nothing - just stick with HTML already present
+            if (username !== undefined) {
+                welcomeDiv = document.getElementById("welcome");
+
+                // display customized greeting and logout option
+                welcomeDiv.innerHTML = "<h2>Welcome back, " + username + "!</h2>";
+                welcomeDiv.innerHTML += "<p>Click <a href='#' id='logout'>here</a> if you're not " + username + "</p>";
+
+                // if the user clicks the logout link
+                document.getElementById("logout").addEventListener("click", function() {
+                    // delete the cookie
+                    setCookie("username", "", -1);
+                    // reload the page
+                    window.location.reload();
+                });
+            }
+        </script>
+    </body>
+</html>
